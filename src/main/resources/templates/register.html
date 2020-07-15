@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymelesaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/journal/bootstrap.min.css"
+    />
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+		<div class="row mt-5">
+			<div class="col-md-6 m-auto">
+			  <div class="card card-body">
+				<h1 class="text-center mb-3">
+				  <i class="fas fa-user-plus"></i> Register
+				</h1>
+				  <div th:if="${message}">
+					  <div class="alert alert-warning alert-dismissible fade show" role="alert" th:text="${message}">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+						  </button>
+					  </div>
+				  </div>
+				<form th:action="@{/register}" th:object="${user}" method="POST">
+				  <div class="form-group">
+					<label for="username">Username</label>
+					<input
+					  type="text"
+					  id="username"
+					  name="username"
+					  class="form-control"
+					  placeholder="Enter Username"
+					  th:field="*{username}"
+					/>
+				  </div>
+				  <div class="form-group">
+					<label for="password">Password</label>
+					<input
+					  type="password"
+					  id="password"
+					  name="password"
+					  class="form-control"
+					  placeholder="Create Password"
+					  th:field="*{password}"
+					/>
+				  </div>
+				  <div class="form-group">
+					<label for="type">Type</label>
+					<select
+						id="type"
+						name="type"
+						class="form-control"
+						th:field="*{type}"
+					>
+					<option value="A" selected>A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+					</select>
+				  </div>
+				  <button type="submit" class="btn btn-primary btn-block">
+					Register
+				  </button>
+				</form>
+				<p class="lead mt-4">Have An Account? <a th:href="@{/login}">Login</a></p>
+			  </div>
+			</div>
+		  </div>
+	</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
